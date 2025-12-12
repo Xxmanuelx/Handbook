@@ -157,13 +157,11 @@ body{
   width:100%; height:100%;
   transform-style:preserve-3d;
   transform-origin:left center;
-  /* original base timing (used by hardcover) */
   transition:
     transform .45s cubic-bezier(.2,.9,.2,1),
     box-shadow .45s cubic-bezier(.2,.9,.2,1);
 }
 
-/* smoother, longer, more realistic only for inner pages (NOT cover) */
 .page:not(.back-cover){
   transition:
     transform .7s cubic-bezier(.18,.8,.25,1),
@@ -175,10 +173,13 @@ body{
   position:absolute;
   inset:0;
   padding:32px;
+
+  /* ⭐ YOUR LOCAL TEXTURE APPLIED HERE ⭐ */
   background:
-    url("https://i.imgur.com/BT2xE0D.jpeg") center/120% 120% no-repeat,
+    url("textures/photo-1712145176725-673500482322.jpeg") center/120% 120% no-repeat,
     radial-gradient(circle at 10% 10%, rgba(255,255,255,0.16), transparent 55%),
     #f6f0e4;
+
   background-blend-mode:multiply, soft-light, normal;
   box-shadow:
     inset -5px 0 11px rgba(0,0,0,0.09),
@@ -186,7 +187,7 @@ body{
   backface-visibility:hidden;
 }
 
-/* base left edge shadow */
+/* base left shadow */
 .page .front::before{
   content:"";
   position:absolute;
@@ -195,7 +196,6 @@ body{
   background:linear-gradient(90deg,rgba(0,0,0,0.35),rgba(0,0,0,0));
 }
 
-/* curved highlight + dynamic shadow ONLY on inner pages */
 .page:not(.back-cover) .front::after,
 .page:not(.back-cover) .back::after{
   content:"";
@@ -224,7 +224,6 @@ body{
   box-shadow:inset -8px 0 16px rgba(0,0,0,0.18), 0 10px 24px rgba(0,0,0,0.26);
 }
 
-/* while turning, boost shadows for depth — ONLY for inner pages */
 .page:not(.back-cover).turning .front,
 .page:not(.back-cover).turning .back{
   box-shadow:
@@ -232,14 +231,6 @@ body{
     0 18px 40px rgba(0,0,0,0.35);
 }
 
-/* bend direction only affects inner pages */
-.page:not(.back-cover).turning.forward{
-  transform-origin:left center;
-}
-
-.page:not(.back-cover).turning.backward{
-  transform-origin:right center;
-}
 
 /* ---------------------------------- */
 /*    C — LEATHER BACK COVER FLIPS    */
@@ -252,10 +243,6 @@ body{
     radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.55), transparent 55%),
     url("leather_cover.png") center/cover no-repeat,
     #0a213a !important;
-
-  background-blend-mode:soft-light, multiply, normal, normal;
-  backface-visibility:hidden !important;
-  opacity:1 !important;
 }
 
 .page.back-cover .front::before,
@@ -393,8 +380,6 @@ function playCoverClose() {
     // only inner pages get the "turning" bending classes
     if (!page.classList.contains('back-cover')) {
       page.classList.add('turning');
-      page.classList.toggle('forward', flip);
-      page.classList.toggle('backward', !flip);
     }
 
     /* 🔊 CORRECTED SOUND BEHAVIOR */
