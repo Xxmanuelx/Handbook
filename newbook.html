@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LSPD RP Flipbook — Premium Leather</title>
+
+<style>
+:root{
+  --book-width:1200px;
+  --book-height:800px;
+  --cover-thickness:30px;
+  --paper-color:#fffdf8;
+  --shadow:0 24px 60px rgba(0,0,0,0.35);
+}
+
+/* Base Layout */
+html,body{height:100%;margin:0}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#050b14;
+  font-family:Inter,Arial,system-ui;
+}
+
+/* Book Container */
+.book-wrap{
+  width:var(--book-width);
+  height:var(--book-height);
+  position:relative;
+  perspective:2200px;
+  user-select:none;
+  filter:drop-shadow(0 28px 50px rgba(0,0,0,0.6));
+}
+
+/* ---------------------------------- */
+/*        PREMIUM LEATHER COVER       */
+/* ---------------------------------- */
+
+.cover{
+  position:absolute; inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform-style:preserve-3d;
+  pointer-events:none;
+}
+
+.cover .side{
+  position:absolute;
+  top:0;
+  height:100%;
+  width:calc(50% + var(--cover-thickness));
+  backface-visibility:hidden;
+  color:#f5f7ff;
+  padding:32px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(255,255,255,0.14), transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.55), transparent 55%),
+    url("leather_cover.png") center/cover no-repeat,
+    #0a213a;
+  background-blend-mode:soft-light, multiply, normal, normal;
+}
+
+.cover .side::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border-radius:6px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.15),
+    inset 0 0 26px rgba(0,0,0,0.9);
+}
+
+.cover .side::after{
+  content:"";
+  position:absolute;
+  top:-30%;
+  left:5%;
+  width:70%;
+  height:160%;
+  transform:rotate(-10deg);
+  background:linear-gradient(
+    130deg,
+    rgba(255,255,255,0.32) 0%,
+    rgba(255,255,255,0.10) 20%,
+    rgba(0,0,0,0.0) 55%,
+    rgba(0,0,0,0.55) 100%
+  );
+  opacity:.55;
+  mix-blend-mode:screen;
+}
+
+.cover-title{
+  font-size:36px;
+  margin:0;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.cover-subtitle{
+  margin-top:12px;
+  font-size:14px;
+  opacity:.92;
+}
+
+.cover .front{
+  left:0;
+  transform-origin:left center;
+}
+.cover .back{
+  right:0;
+  transform-origin:right center;
+  transform:rotateY(180deg);
+}
+
+/* Spine */
+.spine{
+  position:absolute;
+  left:calc(50% - var(--cover-thickness)/2);
+  width:var(--cover-thickness);
+  height:100%;
+  background:linear-gradient(180deg,#040a16,#0c192a);
+  box-shadow:
+    inset -10px 0 24px rgba(0,0,0,0.8),
+    0 0 12px rgba(0,0,0,0.7);
+}
+
+/* Pages container */
+.pages{
+  position:absolute;
+  left:50%;
+  top:2.5%;
+  width:calc(50% - var(--cover-thickness)/2);
+  height:95%;
+  transform:translateX(-2%);
+  transform-style:preserve-3d;
+  z-index:5;
+}
+
+/* ---------------------------------- */
+/*      REAL PAPER TEXTURE PAGES      */
+/* ---------------------------------- */
+
+.page{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  transform-style:preserve-3d;
+  transform-origin:left center;
+  /* original base timing (used by hardcover) */
+  transition:
+    transform .45s cubic-bezier(.2,.9,.2,1),
+    box-shadow .45s cubic-bezier(.2,.9,.2,1);
+}
+
+/* smoother, longer, more realistic only for inner pages (NOT cover) */
+.page:not(.back-cover){
+  transition:
+    transform .7s cubic-bezier(.18,.8,.25,1),
+    box-shadow .7s cubic-bezier(.18,.8,.25,1);
+}
+
+.page .front,
+.page .back{
+  position:absolute;
+  inset:0;
+  padding:32px;
+  background:
+    url("https://i.imgur.com/BT2xE0D.jpeg") center/120% 120% no-repeat,
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,0.16), transparent 55%),
+    #f6f0e4;
+  background-blend-mode:multiply, soft-light, normal;
+  box-shadow:
+    inset -5px 0 11px rgba(0,0,0,0.09),
+    0 7px 18px rgba(0,0,0,0.16);
+  backface-visibility:hidden;
+}
+
+/* base left edge shadow */
+.page .front::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:16px;
+  background:linear-gradient(90deg,rgba(0,0,0,0.35),rgba(0,0,0,0));
+}
+
+/* curved highlight + dynamic shadow ONLY on inner pages */
+.page:not(.back-cover) .front::after,
+.page:not(.back-cover) .back::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.45), transparent 40%),
+    linear-gradient(90deg, rgba(0,0,0,0.45), transparent 40%, rgba(0,0,0,0.6));
+  mix-blend-mode:multiply;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .7s cubic-bezier(.18,.8,.25,1);
+}
+
+.page:not(.back-cover).turning .front::after,
+.page:not(.back-cover).turning .back::after{
+  opacity:.8;
+}
+
+.page .back{
+  transform:rotateY(180deg);
+}
+
+.page.flipped .front,
+.page.flipped .back{
+  box-shadow:inset -8px 0 16px rgba(0,0,0,0.18), 0 10px 24px rgba(0,0,0,0.26);
+}
+
+/* while turning, boost shadows for depth — ONLY for inner pages */
+.page:not(.back-cover).turning .front,
+.page:not(.back-cover).turning .back{
+  box-shadow:
+    inset -6px 0 14px rgba(0,0,0,0.18),
+    0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* bend direction only affects inner pages */
+.page:not(.back-cover).turning.forward{
+  transform-origin:left center;
+}
+
+.page:not(.back-cover).turning.backward{
+  transform-origin:right center;
+}
+
+/* ---------------------------------- */
+/*    C — LEATHER BACK COVER FLIPS    */
+/* ---------------------------------- */
+
+.page.back-cover .front,
+.page.back-cover .back {
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(255,255,255,0.14), transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.55), transparent 55%),
+    url("leather_cover.png") center/cover no-repeat,
+    #0a213a !important;
+
+  background-blend-mode:soft-light, multiply, normal, normal;
+  backface-visibility:hidden !important;
+  opacity:1 !important;
+}
+
+.page.back-cover .front::before,
+.page.back-cover .back::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border-radius:6px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.15),
+    inset 0 0 26px rgba(0,0,0,0.9);
+}
+
+.page.back-cover .front::after,
+.page.back-cover .back::after{
+  content:"";
+  position:absolute;
+  top:-30%; left:5%;
+  width:70%; height:160%;
+  transform:rotate(-10deg);
+  background:linear-gradient(
+    130deg,
+    rgba(255,255,255,0.32) 0%,
+    rgba(255,255,255,0.10) 20%,
+    rgba(0,0,0,0.0) 55%,
+    rgba(0,0,0,0.55) 100%
+  );
+  opacity:.55;
+  mix-blend-mode:screen;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔊 AUDIO -->
+<audio id="pageSound" src="page-flip.mp3" preload="auto"></audio>
+<audio id="coverSound" src="cover-close.mp3" preload="auto"></audio>
+
+<div class="book-wrap">
+
+  <!-- HARD FRONT COVER -->
+  <div class="cover">
+    <div class="side front">
+      <h1 class="cover-title">LSPD HANDBOOK</h1>
+      <p class="cover-subtitle">Los Santos Police Department — RP Guide</p>
+    </div>
+
+    <div class="spine"></div>
+
+    <div class="side back">
+      <h3>Los Santos Police Department</h3>
+      <p>Official in-city handbook for active-duty officers.</p>
+    </div>
+  </div>
+
+  <!-- PAGES -->
+  <div class="pages" id="pages">
+
+    <div class="page" style="z-index:9">
+      <div class="front">
+        <h2>Welcome Officer</h2>
+        <p>Welcome to the LSPD...</p>
+      </div>
+      <div class="back"></div>
+    </div>
+
+    <div class="page" style="z-index:8">
+      <div class="front">
+        <h2>Radio Codes</h2>
+      </div>
+      <div class="back"></div>
+    </div>
+
+    <!-- BACK COVER -->
+    <div class="page back-cover" style="z-index:1">
+      <div class="front"></div>
+      <div class="back"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* 🔊 SOUND FUNCTIONS */
+function playPageFlip() {
+  const s = document.getElementById("pageSound");
+  s.currentTime = 0;
+  s.play();
+}
+
+function playCoverClose() {
+  const s = document.getElementById("coverSound");
+  s.currentTime = 0;
+  s.play();
+}
+
+/* PAGE FLIP LOGIC */
+(function(){
+  const pages = [...document.querySelectorAll('.page')];
+  const total = pages.length;
+  let flipping = false;
+
+  const OFFSET_X = 6;
+  const OFFSET_Z = 2;
+  const MAX_OFFSET = 90;
+
+  pages.forEach((p,i)=>{
+    p.dataset.index = i+1;
+    p.style.zIndex = total - i;
+  });
+
+  const offsetFor = idx =>
+    Math.max(-MAX_OFFSET, -OFFSET_X * (idx-1));
+
+  const apply = (page,flip)=>{
+    const idx = +page.dataset.index;
+    if(flip){
+      page.style.transform =
+        `rotateY(-180deg) translateX(${offsetFor(idx)}px) translateZ(${-OFFSET_Z*idx}px)`;
+      page.style.zIndex = idx - 1;
+    } else {
+      page.style.transform = `rotateY(0deg) translateX(0) translateZ(0)`;
+      pages.forEach((p,i)=>p.style.zIndex = total - i);
+    }
+  };
+
+  const flipPage = page=>{
+    if(flipping) return;
+    flipping = true;
+
+    const flip = !page.classList.contains('flipped');
+    const isLastPage = +page.dataset.index === pages.length;
+
+    // only inner pages get the "turning" bending classes
+    if (!page.classList.contains('back-cover')) {
+      page.classList.add('turning');
+      page.classList.toggle('forward', flip);
+      page.classList.toggle('backward', !flip);
+    }
+
+    /* 🔊 CORRECTED SOUND BEHAVIOR */
+    if (!isLastPage) {
+      playPageFlip();   // normal pages only
+    } else if (flip) {
+      setTimeout(() => playCoverClose(), 320); // last page only
+    }
+
+    apply(page,flip);
+
+    const doneDelay = page.classList.contains('back-cover') ? 470 : 720;
+
+    setTimeout(()=>{
+      page.classList.toggle('flipped',flip);
+
+      if (!page.classList.contains('back-cover')) {
+        page.classList.remove('turning','forward','backward');
+      }
+
+      flipping=false;
+    }, doneDelay);
+  };
+
+  pages.forEach(p=>p.addEventListener("click",()=>flipPage(p)));
+})();
+</script>
+
+</body>
+</html>
