@@ -110,10 +110,29 @@ body{
 }
 
 .cover-title{
-  font-size:36px;
+  font-size:46px;
   margin:0;
   letter-spacing:3px;
   text-transform:uppercase;
+}
+
+/* 🧵 SEWN / STITCHED TEXT EFFECT */
+.cover .front .cover-title,
+.cover .front .cover-subtitle{
+  color:#e6e2d8; /* slightly off-white leather thread look */
+
+  text-shadow:
+    /* inner pressed shadow */
+    0 1px 0 rgba(0,0,0,0.65),
+    0 2px 1px rgba(0,0,0,0.55),
+
+    /* subtle highlight edge */
+    0 -1px 0 rgba(255,255,255,0.12),
+
+    /* soft depth */
+    0 6px 10px rgba(0,0,0,0.45);
+
+  filter: saturate(0.9) contrast(1.05);
 }
 
 .cover-subtitle{
@@ -123,13 +142,18 @@ body{
 }
 
 .cover .front{
-  left:0;
-  transform-origin:left center;
+  justify-content:flex-start;   /* move content up */
+  padding-top:0px;            /* adjust this value as needed */
 }
 .cover .back{
   right:0;
   transform-origin:right center;
   transform:rotateY(180deg);
+}
+
+.cover .front .cover-title,
+.cover .front .cover-subtitle{
+  transform: translateY(170px); /* positive = lower */
 }
 
 /* Spine */
@@ -297,35 +321,165 @@ body{
     <!-- HARD FRONT COVER -->
     <div class="cover">
       <div class="side front">
-        <h1 class="cover-title">LSPD HANDBOOK</h1>
-        <p class="cover-subtitle">Los Santos Police Department — RP Guide</p>
+        <h1 class="cover-title">LSPD KÉZIKÖNYV</h1>
+        <p class="cover-subtitle">Los Santos Police Department — Tananyag</p>
+        <p class="cover-subtitle"><u>2025.12.13-i kiadvány</u></p>
       </div>
 
       <div class="spine"></div>
 
       <div class="side back">
-        <h3>Los Santos Police Department</h3>
-        <p>Official in-city handbook for active-duty officers.</p>
       </div>
     </div>
 
     <!-- PAGES -->
     <div class="pages" id="pages">
 
-      <div class="page" style="z-index:9">
-        <div class="front">
-          <h2>Welcome Officer</h2>
-          <p>Welcome to the LSPD...</p>
-        </div>
-        <div class="back"></div>
+  <!-- PAGE 1 -->
+  <div class="page" style="z-index:12">
+    <div class="front">
+      <h1><u>Rendőri szolgálat alapjai</u></h1>
+      <h2>Bevezető:</h2>
+      <h4>Tisztelt Állománytagok!</h4>
+      <p>
+Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újoncok, közrendőrök és tisztek egyaránt – egységes, átlátható és jól követhető képzést kapjon a szolgálattal járó feladatokról, felelősségekről és az elvárt szakmai-etikai normákról.
+      </p>
+      <p>
+        <strong>A dokumentum célja:</strong><br>
+        •<u>Felkészítést</u> nyújtani a rendőri munka <u>elméleti és gyakorlati feladataira,</u><br>
+        <br>
+        •Segítséget biztosítani a vizsgák és alkalmassági felmérések <u>sikeres teljesítéséhez.</u><br>
+        <br>
+        •<u>Szolgálat közben is használható referenciaanyagként támogatni a döntéshozatalt és a helyes intézkedést.</u>
+      </p>
+      <p>
+        A dokumentum felépítése lehetővé teszi a <u>fokozatos tanulást</u>: az alapoktól halad a <u>részletesebb, összetettebb ismeretek</u> felé, biztosítva az <u>átlátható és hatékony felkészülést</u>.
+      </p>
+    </div>
+    <div class="back">
+      <p>
+        <h3>Részlegek:</h3><br>
+        <strong>• Újonc részleg:</strong><br>
+        Célja, hogy <u>biztos alapot nyújtson a rendőri szolgálat megkezdéséhez</u>, és <u>felkészítse az állomány új tagjait a Közrendőri I. szintre lépésre</u>.
+        <br>
+        <br>
+        <strong>• Tiszt I. részleg:</strong><br>
+        <u>Alapvető ismeretek elsajátítása</u>, beleértve a <u>hierarchiát, rádióhasználatot és járőrszolgálati feladatokat</u>.
+        Célja a <u>Lincoln vizsgára való felkészítülés</u>.
+        <br>
+        <br>
+        <strong>• Tiszt II. részleg:</strong><br>
+        <u>Mélyebb elméleti és gyakorlati tudásanyag</u>, <u>eljárásjogi alapfogalmak</u>, <u>kiemelt intézkedések</u> és <u>feladatkörök</u>.
+        Célja a <u>Közrendőri II. vizsgára történő felkészítés</u>.
+        <br>
+        <br>
+        <strong>• Őrmester részleg:</strong><br>
+        <u>Vezetői döntéshozatal</u>, <u>etikai kérdések</u>, <u>engedélyezési és adminisztratív folyamatok</u>, valamint <u>jogi alapismeretek</u>.
+        Célja a <u>Tiszti vizsgára való felkészítés</u>.
+        <br>
+        <br>
+        <strong>• Vizsga részleg:</strong><br>
+        <u>Vizsgakövetelmények</u>, <u>karrierlehetőségek</u> és a <u>vizsgák lebonyolításának menete</u>.
+        <br>
+        <br>
+        Ez a rendszer <u>nem pusztán szabályok összessége</u>, hanem a <u>helyes gondolkodásmód kialakítását</u> szolgálja.
+        Célja, hogy <u>minden helyzetben mérlegelten, felelősségteljesen</u>, és a <u>köz szolgálatát szem előtt tartva</u> járj el.
+      </p>
       </div>
+  </div>
 
-      <div class="page" style="z-index:8">
-        <div class="front">
-          <h2>Radio Codes</h2>
-        </div>
-        <div class="back"></div>
-      </div>
+  <!-- PAGE 2 -->
+  <div class="page" style="z-index:11">
+    <div class="front">
+      <h2>Chain of Command</h2>
+      <ul>
+        <li>Chief of Police</li>
+        <li>Assistant Chief</li>
+        <li>Deputy Chief</li>
+        <li>Captain</li>
+        <li>Lieutenant</li>
+        <li>Sergeant</li>
+        <li>Police Officer</li>
+        <li>Cadet</li>
+      </ul>
+      <p>
+        Orders must always be followed unless they are unlawful.
+        Disputes are handled through proper reporting channels.
+      </p>
+    </div>
+    <div class="back"></div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page" style="z-index:10">
+    <div class="front">
+      <h2>Radio Codes</h2>
+      <ul>
+        <li><strong>10-4</strong> – Acknowledged</li>
+        <li><strong>10-7</strong> – Out of service</li>
+        <li><strong>10-8</strong> – In service</li>
+        <li><strong>10-20</strong> – Location</li>
+        <li><strong>10-38</strong> – Traffic stop</li>
+        <li><strong>10-99</strong> – Officer in distress</li>
+      </ul>
+      <p>
+        Clear and professional radio communication is mandatory at all times.
+      </p>
+    </div>
+    <div class="back"></div>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="page" style="z-index:9">
+    <div class="front">
+      <h2>Patrol Procedures</h2>
+      <p>
+        Officers must patrol assigned zones unless otherwise directed.
+        Presence, visibility, and proactive policing are expected.
+      </p>
+      <ul>
+        <li>Respond to calls promptly</li>
+        <li>Maintain vehicle condition</li>
+        <li>Log incidents accurately</li>
+        <li>Request backup when necessary</li>
+      </ul>
+    </div>
+    <div class="back"></div>
+  </div>
+
+  <!-- PAGE 5 -->
+  <div class="page" style="z-index:8">
+    <div class="front">
+      <h2>Use of Force</h2>
+      <p>
+        Force must always be proportional to the threat.
+        Deadly force is authorized only when there is an immediate danger
+        to life.
+      </p>
+      <p>
+        Officers are required to de-escalate whenever possible and
+        document all use-of-force incidents.
+      </p>
+    </div>
+    <div class="back"></div>
+  </div>
+
+  <!-- PAGE 6 -->
+  <div class="page" style="z-index:7">
+    <div class="front">
+      <h2>Conduct & Discipline</h2>
+      <ul>
+        <li>Respect civilians and fellow officers</li>
+        <li>No corruption or abuse of power</li>
+        <li>No unauthorized equipment usage</li>
+        <li>Follow roleplay standards at all times</li>
+      </ul>
+      <p>
+        Violations may result in suspension, demotion, or termination.
+      </p>
+    </div>
+    <div class="back"></div>
+  </div>
 
       <!-- BACK COVER -->
       <div class="page back-cover" style="z-index:1">
