@@ -116,6 +116,14 @@ body{
   text-transform:uppercase;
 }
 
+.centered-list {
+  list-style-position: inside;
+  padding: 0;
+  margin: 16px auto;
+  display: inline-block;
+  text-align: left; /* keeps bullets readable */
+}
+
 /* 🧵 SEWN / STITCHED TEXT EFFECT */
 .cover .front .cover-title,
 .cover .front .cover-subtitle{
@@ -305,6 +313,27 @@ body{
   opacity:.55;
   mix-blend-mode:screen;
 }
+
+.page-number{
+  position:absolute;
+  bottom:18px;
+  font-size:12px;
+  opacity:0.6;
+  font-style:italic;
+  user-select:none;
+  pointer-events:none;
+}
+
+/* jobb oldal (front) */
+.page .front .page-number{
+  right:28px;
+}
+
+/* bal oldal (back) */
+.page .back .page-number{
+  left:28px;
+}
+
 </style>
 </head>
 
@@ -342,7 +371,7 @@ body{
       <h2>Bevezető:</h2>
       <h4>Tisztelt Állománytagok!</h4>
       <p>
-Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újoncok, közrendőrök és tisztek egyaránt – egységes, átlátható és jól követhető képzést kapjon a szolgálattal járó feladatokról, felelősségekről és az elvárt szakmai-etikai normákról.
+      Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újoncok, közrendőrök és tisztek egyaránt – egységes, átlátható és jól követhető képzést kapjon a szolgálattal járó feladatokról, felelősségekről és az elvárt szakmai-etikai normákról.
       </p>
       <p>
         <strong>A dokumentum célja:</strong><br>
@@ -355,10 +384,12 @@ Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újon
       <p>
         A dokumentum felépítése lehetővé teszi a <u>fokozatos tanulást</u>: az alapoktól halad a <u>részletesebb, összetettebb ismeretek</u> felé, biztosítva az <u>átlátható és hatékony felkészülést</u>.
       </p>
+      <span class="page-number"></span>
     </div>
+     <!-- PAGE 2 -->
     <div class="back">
       <p>
-        <h3>Részlegek:</h3><br>
+        <h2><strong>Részlegek:</strong></h2><br>
         <strong>• Újonc részleg:</strong><br>
         Célja, hogy <u>biztos alapot nyújtson a rendőri szolgálat megkezdéséhez</u>, és <u>felkészítse az állomány új tagjait a Rendőrtiszt I. szintre lépésre</u>.
         <br>
@@ -380,32 +411,36 @@ Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újon
         Ez a rendszer <u>nem pusztán szabályok összessége</u>, hanem a <u>helyes gondolkodásmód kialakítását</u> szolgálja.
         Célja, hogy <u>minden helyzetben mérlegelten, felelősségteljesen</u>, és a <u>köz szolgálatát szem előtt tartva</u> járj el.
       </p>
+      <span class="page-number"></span>
       </div>
   </div>
 
-  <!-- PAGE 2 -->
+  <!-- PAGE 3 -->
   <div class="page" style="z-index:11">
     <div class="front">
-      <h2>Chain of Command</h2>
-      <ul>
-        <li>Chief of Police</li>
-        <li>Assistant Chief</li>
-        <li>Deputy Chief</li>
-        <li>Captain</li>
-        <li>Lieutenant</li>
-        <li>Sergeant</li>
-        <li>Police Officer</li>
-        <li>Cadet</li>
-      </ul>
+     <h2 style="text-align:center;"><strong>A RENDŐRSÉG MŰKÖDÉSE</strong></h2>
       <p>
-        Orders must always be followed unless they are unlawful.
-        Disputes are handled through proper reporting channels.
+      A hierarchia az alá- és fölérendeltségen alapuló szolgálati viszony, amelyben az állomány tagjai rendfokozat, beosztás és hatáskör szerint kerülnek besorolásra.
+      <br>
+      <br>
+      Ez a szervezeti struktúra biztosítja a <u>rend és fegyelem fenntartását</u>, az <u>utasítások egyértelmű és követhető rendszerét</u>, valamint a <u>felelősségi körök világos meghatározását</u>.
+      A hierarchia határozza meg, hogy az állomány egyes tagjai <u>milyen döntések meghozatalára jogosultak</u>, és milyen keretek között járhatnak el szolgálatuk során.
+      <br>
+      <br>
+      <h3><strong>Parancsnoki lánc</strong></h3>
+      A parancsnoki lánc a rendőrség irányítási rendszere, amely meghatározza az állományon belüli alá- és fölérendeltségi viszonyokat.<br> Célja az <u>utasítások egyértelmű továbbítása</u>, a <u>felelősségi körök világos meghatározása</u> és a <u>fegyelmezett, hatékony működés biztosítása</u>.<br>
+      A parancsnoki lánc betartása minden állománytag számára kötelező, eltérése csak <u>jogszerű és indokolt esetben</u>, különösen <u>halaszthatatlan veszélyhelyzetben</u> megengedett, a felettes utólagos tájékoztatása mellett.
       </p>
+      <span class="page-number"></span>
     </div>
-    <div class="back"></div>
+     <!-- PAGE 4 -->
+    <div class="back">
+
+      <span class="page-number"></span>
+    </div>
   </div>
 
-  <!-- PAGE 3 -->
+  <!-- PAGE 5 -->
   <div class="page" style="z-index:10">
     <div class="front">
       <h2>Radio Codes</h2>
@@ -420,11 +455,16 @@ Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újon
       <p>
         Clear and professional radio communication is mandatory at all times.
       </p>
+      <span class="page-number"></span>
     </div>
-    <div class="back"></div>
+     <!-- PAGE 6 -->
+    <div class="back">
+
+      <span class="page-number"></span>
+    </div>
   </div>
 
-  <!-- PAGE 4 -->
+  <!-- PAGE 7 -->
   <div class="page" style="z-index:9">
     <div class="front">
       <h2>Patrol Procedures</h2>
@@ -438,11 +478,16 @@ Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újon
         <li>Log incidents accurately</li>
         <li>Request backup when necessary</li>
       </ul>
+      <span class="page-number"></span>
     </div>
-    <div class="back"></div>
+     <!-- PAGE 8 -->
+    <div class="back">
+
+      <span class="page-number"></span>
+    </div>
   </div>
 
-  <!-- PAGE 5 -->
+  <!-- PAGE 9 -->
   <div class="page" style="z-index:8">
     <div class="front">
       <h2>Use of Force</h2>
@@ -455,11 +500,16 @@ Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újon
         Officers are required to de-escalate whenever possible and
         document all use-of-force incidents.
       </p>
+      <span class="page-number"></span>
     </div>
-    <div class="back"></div>
+     <!-- PAGE 10 -->
+    <div class="back">
+
+      <span class="page-number"></span>
+    </div>
   </div>
 
-  <!-- PAGE 6 -->
+  <!-- PAGE 11 -->
   <div class="page" style="z-index:7">
     <div class="front">
       <h2>Conduct & Discipline</h2>
@@ -472,8 +522,13 @@ Az oktatási anyag célja, hogy a rendőri állomány valamennyi tagja – újon
       <p>
         Violations may result in suspension, demotion, or termination.
       </p>
+      <span class="page-number"></span>
     </div>
-    <div class="back"></div>
+     <!-- PAGE 12 -->
+    <div class="back">
+
+      <span class="page-number"></span>
+    </div>
   </div>
 
       <!-- BACK COVER -->
@@ -617,6 +672,21 @@ function playCoverClose() {
     const current = pages.find(p=>!p.classList.contains('flipped')) || pages[pages.length-1];
     if (current) flipPage(current);
   }, {passive:true});
+})();
+
+// 📄 PAGE NUMBERING
+(function(){
+  const pages = [...document.querySelectorAll('.page:not(.back-cover)')];
+
+  let pageNumber = 1;
+
+  pages.forEach(page => {
+    const fronts = page.querySelectorAll('.front .page-number');
+    const backs  = page.querySelectorAll('.back .page-number');
+
+    fronts.forEach(el => el.textContent = pageNumber++);
+    backs.forEach(el => el.textContent = pageNumber++);
+  });
 })();
 </script>
 
