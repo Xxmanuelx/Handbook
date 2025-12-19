@@ -334,6 +334,158 @@ body{
   left:28px;
 }
 
+
+/* Felszerelés sor elrendezés */
+.equipment-row{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-top:24px;
+}
+
+/* Kép mérete */
+.equipment-img{
+  width:320px;       /* ⬅️ itt tudod kisebb/nagyobbra venni */
+  max-width:40%;
+  object-fit:contain;
+}
+
+/* Szöveg blokk */
+.equipment-info{
+  font-size:14px;
+  line-height:1.5;
+}
+
+.equipment-info h4{
+  margin:0 0 8px 0;
+}
+
+.weapon-img{
+  width: 320px;          /* méret – ezt állítod */
+  margin-top: 16px;
+  margin-left: 0;        /* balra tolás */
+  display: block;
+
+  /* 🔑 EZ OLDJA MEG A FEHÉR SZÍNT */
+  mix-blend-mode: normal;
+  filter: none;
+}
+
+/* 🔒 Egységes felszerelés képkeret */
+.weapon-box{
+  width: 260px;          /* ⬅️ EZ A MÉRET minden képre */
+  height: 140px;         /* ⬅️ magasság egységesítése */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Maga a kép */
+.weapon-box img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;  /* 🔑 nem torzul */
+  display: block;
+}
+
+/* Kép fix keretben → minden kép ugyanakkora */
+.weapon-frame{
+  width:120px;
+  height:90px;
+  background: radial-gradient(
+    ellipse at top,
+    #1a1a1a,
+    #0c0c0c
+  );
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.06),
+    0 6px 14px rgba(0,0,0,0.45);
+  overflow:hidden; /* 🔑 EZ VÁGJA LE A KILÓGÁST */
+}
+
+/* Maga a kép */
+.weapon-frame img{
+  max-width:90%;
+  max-height:90%;
+  object-fit:contain;
+}
+
+
+/* Fegyverek rácsos elrendezése */
+.weapon-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔑 3 oszlop */
+  gap:22px 28px;
+  margin-top:20px;
+}
+
+/* Egy fegyver kártya */
+.weapon-card{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+/* Szöveges rész */
+.weapon-card .equipment-info{
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* FIX KÉP DOBOZ */
+.weapon-img-wrap{
+  width: 160px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* A KÉP ITT LESZ „ÖSSZENYOMVA” */
+.weapon-img-wrap img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.weapon-info{
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.weapon-card h4{
+  font-size:13px;
+  margin:4px 0 2px;
+}
+
+.weapon-card ul{
+  font-size:12px;
+  line-height:1.35;
+}
+
+.weapon-frame,
+.weapon-frame img,
+.weapon-card img{
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.weapon-grid-center{
+  justify-items: center;          /* elemek középre */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 70%;
+  margin: 20px auto 0;            /* ⬅️ középre húzza az egészet */
+}
+
+
 </style>
 </head>
 
@@ -680,15 +832,134 @@ body{
         <li>Taktikai öv</li>
         <li>Fegyvertok</li>
       </ul>
+<div class="weapon-grid weapon-grid-center">
+  <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/shotgun.png" alt="Gumilövedékes Shotgun">
+    </div>
+    <h4>Gumilövedékes Shotgun</h4>
+    <ul>
+      <li>Kevésbé halálos (less-lethal) eszköz</li>
+      <li>Ideális tömegkezelési helyzetekben</li>
+      <li>15 méteres hatótáv</li>
+      <li>Célja a tömegoszlatás, nem az azonnali fegyverhasználat</li>
+    </ul>
+  </div>
+    <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/vest.png" alt="vest">
+    </div>
+    <h4>Rendőrségi lövedékálló mellény</h4>
+    <ul>
+      <li>Tárak és egyéb felszerelésnek kialakított zsebek</li>
+      <li>Több rétegű védelem</li>
+      <li>Elhelyezhető kiegészítők</li>
+      <li>2 db 10 mm-es protektív lap</li>
+    </ul>
+  </div>
+</div> 
     <span class="page-number"></span>
   </div>
-
   <div class="back">
-
+<div class="weapon-grid">
+  <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/taser.png" alt="X26 Sokkoló">
+    </div>
+    <h4>X26 Sokkoló</h4>
+    <ul>
+      <li>50 000 voltos működés</li>
+      <li>15 mp sokkolási idő</li>
+      <li>Ideiglenes mozgáskorlátozás</li>
+      <li>15 méteres hatótáv</li>
+    </ul>
+  </div>
+  <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/radio.png" alt="Rádió">
+    </div>
+    <h4>Rádió</h4>
+    <ul>
+      <li>Titkosított frekvencia</li>
+      <li>1–5 csatorna</li>
+      <li>Teljes lefedettség</li>
+    </ul>
+  </div>
+    <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/pisztoly.png" alt="Szolgálati maroklőfegyver">
+    </div>
+    <h4>Szolgálati maroklőfegyver</h4>
+    <ul>
+      <li>9 mm-es lőszer kompatibilitás</li>
+      <li>12 db lőszer kapacitás</li>
+      <li>Könnyű hordozhatóság</li>
+      <li>Gyors és nagy tűzerejű</li>
+    </ul>
+  </div>
+      <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/cuff.png" alt="Bilincs és bilincskulcs">
+    </div>
+    <h4>Bilincs és bilincskulcs</h4>
+    <ul>
+      <li>Teljes fém kialakítás</li>
+      <li>Minden rendőr számára kompatibilis kulcsok</li>
+      <li>Reteszes zármechanizmus</li>
+      <li>Erős középső fém láncolat</li>
+    </ul>
+  </div>
+      <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/gumibot.png" alt="Gumibot">
+    </div>
+    <h4>Gumibot</h4>
+    <ul>
+      <li>Könnyen hordozható ütőeszköz</li>
+      <li>Teleszkópos kivitel</li>
+      <li>Több szegmensből áll</li>
+      <li>Gumírozott markolat</li>
+    </ul>
+  </div>
+    <div class="weapon-card">
+    <div class="weapon-frame">
+      <img src="html/textures/light.png" alt="Nagy teljesítményű rúdlámpa">
+    </div>
+    <h4>Nagy teljesítményű rúdlámpa</h4>
+    <ul>
+      <li>Lítium akkumulátoros működés</li>
+      <li>12 voltos teljesítmény</li>
+      <li>LED világítófej</li>
+      <li>Ütésálló kialakítás</li>
+    </ul>
+  </div>
+</div>
     <span class="page-number"></span>
   </div>
 </div>
 
+  <!-- PAGE 15 -->
+  <div class="page" style="z-index:5">
+    <div class="front">
+      <h2 style="text-align: center;"><strong>Kényszerítő eszközök alkalmazása</strong></h2>
+      <strong>Kényszerítő eszközök</strong>
+      <ul>
+        <li>Testi kényszer</li>
+        <li>Bilincs</li>
+        <li>Vezetőszár</li>
+        <li>Gumibot</li>
+        <li>Elektromos sokkoló</li>
+        <li>Gumilövedékes shotgun</li>
+        <li>Éles lőfegyver</li>
+        <li>Szolgálati kutya</li>
+      </ul>
+      <span class="page-number"></span>
+    </div>
+     <!-- PAGE 16 -->
+    <div class="back">
+      <span class="page-number"></span>
+    </div>
+  </div>
 
       <!-- BACK COVER -->
       <div class="page back-cover" style="z-index:1">
